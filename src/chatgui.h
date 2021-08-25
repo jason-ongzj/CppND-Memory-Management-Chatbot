@@ -20,7 +20,6 @@ private:
     //// STUDENT CODE
     ////
 
-    // ChatLogic *_chatLogic;
     unique_ptr<ChatLogic> _chatLogic;
 
     ////
@@ -32,7 +31,6 @@ public:
     ~ChatBotPanelDialog();
 
     // getter / setter
-    // ChatLogic *GetChatLogicHandle() { return _chatLogic; }
     ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events

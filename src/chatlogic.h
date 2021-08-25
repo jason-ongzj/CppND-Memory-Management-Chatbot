@@ -5,6 +5,8 @@
 #include <string>
 #include "chatgui.h"
 
+using namespace std;
+
 // forward declarations
 class ChatBot;
 class GraphEdge;
@@ -17,8 +19,8 @@ private:
     ////
 
     // data handles (owned)
-    std::vector<GraphNode *> _nodes;
-    std::vector<GraphEdge *> _edges;
+    vector<unique_ptr<GraphNode>> _nodes;
+    vector<GraphEdge *> _edges;
 
     ////
     //// EOF STUDENT CODE
@@ -39,6 +41,12 @@ public:
     // constructor / destructor
     ChatLogic();
     ~ChatLogic();
+
+    // rule of 5
+    ChatLogic(const ChatLogic &source); // copy constructor
+    ChatLogic &operator=(const ChatLogic &source); // copy assignment
+    ChatLogic(ChatLogic &&source); // move constructor
+    ChatLogic &operator=(ChatLogic &&source); // move assignment
 
     // getter / setter
     void SetPanelDialogHandle(ChatBotPanelDialog *panelDialog);
